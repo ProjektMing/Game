@@ -1,3 +1,5 @@
+旧版请至 [unity](https://github.com/wsljjjzn/Game/tree/unity) 分支查看。
+
 本模板库提供了一种引用 FNA + Nez 的解决方案。
 
 请在拉取模板后自行重命名解决方案名称。
