@@ -1,5 +1,0 @@
-<Solution>
-  <Project Path="FNA/FNA.Core.csproj" />
-  <Project Path="Nez/Nez.Portable/Nez.FNA.Core.csproj" />
-  <Project Path="Sample/Sample.csproj" />
-</Solution>
