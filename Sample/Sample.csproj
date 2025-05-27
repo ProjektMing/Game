@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Nez\Nez.Portable\Nez.FNA.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\fnalibs\x86\*.*" Condition="'$(Platform)' == 'x86'" Visible="false">
+            <Link>%(Platform)\%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="..\fnalibs\x64\*.*" Condition="'$(Platform)' == 'x64' OR '$(Platform)' == 'AnyCPU'" Visible="false">
+            <Link>%(Platform)\%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+</Project>
