@@ -1,4 +1,7 @@
 using Nez;
+using Nez.Console;
+using Sample.Scenes;
+using Sample.Scenes.CombatScenes;
 
 namespace Sample;
 
@@ -9,7 +12,15 @@ internal class Game : Core
         base.Initialize();
         Window.Title = "游戏示例";
         Window.AllowUserResizing = false;
-        Scene = new Scenes.SplashScene();
+        IsMouseVisible = false;
+        ExitOnEscapeKeypress = false;
 
+        Scene = new SplashScene();
+    }
+
+    [Command("to-combat", "切换到战斗场景")]
+    internal static void ToCombatScene()
+    {
+        Scene = new Scene1("东方弹幕秀");
     }
 }

@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Nez\Nez.Portable\Nez.FNA.Core.csproj" />
+        <ProjectReference Include="..\Stg.Nez\Stg.Nez.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -18,6 +18,27 @@
         </Content>
         <Content Include="..\fnalibs\x64\*.*" Condition="'$(Platform)' == 'x64' OR '$(Platform)' == 'AnyCPU'" Visible="false">
             <Link>%(Platform)\%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="ContentPathGenerator.tt">
+            <Generator>TextTemplatingFileGenerator</Generator>
+            <LastGenOutput>ContentPathGenerator.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="ContentPathGenerator.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>ContentPathGenerator.tt</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="Content/**/*.*" Exclude="**/*.fx; **/.keep Content/Content-Goes-Here.txt">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
