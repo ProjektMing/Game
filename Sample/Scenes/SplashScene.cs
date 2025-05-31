@@ -9,12 +9,17 @@ public class SplashScene : Scene
     {
         base.Initialize();
 
-        var textEntity = CreateEntity("SplashText");
-        textEntity.Transform.Scale = new Vector2(8f, 8f);
-        textEntity.Transform.Position = Screen.Center;
+        var splashEntity = CreateEntity("Splash");
+        splashEntity.Transform.Scale = new Vector2(8f, 8f);
+        splashEntity.Transform.Position = Screen.Center + new Vector2(100, -200);
 
-        var text = new TextComponent(Graphics.Instance.BitmapFont, "Splash!", new Vector2(0, 0), Color.Red);
-        textEntity.AddComponent(text);
+        var text = new TextComponent(
+            Graphics.Instance.BitmapFont,
+            "Touhou\nProject",
+            new Vector2(0, 0),
+            Color.Red
+        );
+        splashEntity.AddComponent(text);
         text.HorizontalOrigin = HorizontalAlign.Center;
         text.VerticalOrigin = VerticalAlign.Center;
     }

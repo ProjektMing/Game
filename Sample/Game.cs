@@ -18,7 +18,7 @@ internal class Game : Core
         Scene = new SplashScene();
     }
 
-    [Command("to-combat", "切换到战斗场景")]
+    [Command("to-combat", "toggle to Combat")]
     internal static void ToCombatScene()
     {
         Scene = new Scene1("东方弹幕秀");
