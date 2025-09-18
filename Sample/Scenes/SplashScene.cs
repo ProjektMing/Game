@@ -1,26 +1,57 @@
 using Microsoft.Xna.Framework;
 using Nez;
+using Sample.Scenes.CombatScenes;
 
 namespace Sample.Scenes;
 
 public class SplashScene : Scene
 {
-    public override void Initialize()
-    {
-        base.Initialize();
+    bool isTransitioning = false;
 
-        var splashEntity = CreateEntity("Splash");
-        splashEntity.Transform.Scale = new Vector2(8f, 8f);
-        splashEntity.Transform.Position = Screen.Center + new Vector2(100, -200);
+    public override void Begin()
+    {
+        base.Begin();
+
+        var splashEntity = CreateEntity("Splash!");
+        splashEntity.Transform.Scale = new Vector2(9f, 9f);
+        splashEntity.Transform.Position = Screen.Center;
 
         var text = new TextComponent(
             Graphics.Instance.BitmapFont,
             "Touhou\nProject",
-            new Vector2(0, 0),
+            Vector2.Zero,
             Color.Red
-        );
+        )
+        {
+            HorizontalOrigin = HorizontalAlign.Center,
+            VerticalOrigin = VerticalAlign.Center,
+        };
         splashEntity.AddComponent(text);
-        text.HorizontalOrigin = HorizontalAlign.Center;
-        text.VerticalOrigin = VerticalAlign.Center;
+
+        // 等待2秒后切换到下一个场景
+        Core.Schedule(
+            2f,
+            timer =>
+            {
+                if (isTransitioning)
+                {
+                    return;
+                }
+                // 切换到下一个场景
+                Core.StartSceneTransition(new WindTransition(() => new Menu()));
+            }
+        );
+    }
+
+    public override void Update()
+    {
+        // 如果按下空格键，则切换到下一个场景
+        if (Input.IsKeyPressed(Microsoft.Xna.Framework.Input.Keys.Space))
+        {
+            isTransitioning = true;
+            Core.StartSceneTransition(new WindTransition(() => new Menu()));
+            return;
+        }
+        base.Update();
     }
 }

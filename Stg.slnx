@@ -1,6 +1,10 @@
 <Solution>
   <Project Path="FNA/FNA.Core.csproj" />
+  <Project Path="Nez/Nez.ImGui/Nez.FNA.Core.ImGui.csproj" />
+  <Project Path="Nez/Nez.Persistence/Nez.FNA.Core.Persistence.csproj" />
   <Project Path="Nez/Nez.Portable/Nez.FNA.Core.csproj" />
-  <Project Path="Sample/Sample.csproj" />
-  <Project Path="Stg.Nez\Stg.Nez.csproj" Type="Classic C#"/>
+  <Project Path="Sample/Sample.csproj">
+    <BuildDependency Project="Nez/Nez.ImGui/Nez.FNA.Core.ImGui.csproj" />
+  </Project>
+  <Project Path="Stg.Nez\Stg.Nez.csproj" />
 </Solution>

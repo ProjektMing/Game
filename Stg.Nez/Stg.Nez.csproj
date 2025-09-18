@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Nez\Nez.Portable\Nez.FNA.Core.csproj"/>
+        <ProjectReference Include="..\Nez\Nez.Portable\Nez.FNA.Core.csproj" />
     </ItemGroup>
 
 </Project>
